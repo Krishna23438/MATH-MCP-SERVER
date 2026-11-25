@@ -12,11 +12,22 @@ def _as_number(x):
   raise TypeError("Expected a number (int/float or numeric string)")
 
 
-@mcp.tool
+@mcp.tool()
 async def add(a: float, b: float) -> float:
   """Return a + b."""
   return _as_number(a) + _as_number(b)
 
-@mcp.tool
-async def subtract(a:float, b:float) -> float
-"Return a - b."
+@mcp.tool()
+async def subtract(a:float, b:float) -> float:
+  "Return a - b."
+  return a-b
+
+@mcp.tool()
+async def multiply(a:float, b:float) -> float:
+  "Return a * b."
+  return a*b
+
+@mcp.tool()
+async def divide(a:float, b:float) -> float:
+  "Return a / b."
+  return a/b
