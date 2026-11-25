@@ -31,3 +31,16 @@ async def multiply(a:float, b:float) -> float:
 async def divide(a:float, b:float) -> float:
   "Return a / b."
   return a/b
+
+@mcp.tool()
+async def power(a:float, b:float) -> float:
+  "Return a ** b."
+  return a**b
+
+@mcp.tool()
+async def divide(a:float, b:float) -> float:
+  "Return a % b."
+  return a%b
+
+if __name__ == "__main__":
+  mcp.run()
