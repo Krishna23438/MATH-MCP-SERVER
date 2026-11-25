@@ -14,5 +14,9 @@ def _as_number(x):
 
 @mcp.tool
 async def add(a: float, b: float) -> float:
-  """Return a+b."""
+  """Return a + b."""
   return _as_number(a) + _as_number(b)
+
+@mcp.tool
+async def subtract(a:float, b:float) -> float
+"Return a - b."
