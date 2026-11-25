@@ -38,7 +38,7 @@ async def power(a:float, b:float) -> float:
   return a**b
 
 @mcp.tool()
-async def divide(a:float, b:float) -> float:
+async def modulus(a:float, b:float) -> float:
   "Return a % b."
   return a%b
 
