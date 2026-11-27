@@ -1,7 +1,6 @@
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain_community.tools import DuckDuckGoSearchRun
 from typing import TypedDict, Annotated
 from langchain_core.messages import BaseMessage, HumanMessage
 from langgraph.graph.message import add_messages
@@ -17,19 +16,17 @@ llm = ChatGroq(
     temperature=0.7
 )
 
+
 client = MultiServerMCPClient(
     {
-    "math": {
-        "transport": "stdio",
-        "command": r"C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER\.venv\Scripts\python.exe",
-        "args": [
-            "-m",
-            "fastmcp",
-            "run",
-            r"C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER\main.py"
-        ]
+        "math": {
+            "transport": "stdio",
+            "command": r"C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER\.venv\Scripts\python.exe",
+            "args": [
+                r"C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER\main.py"
+            ]
+        }
     }
-}
 )
 
 
@@ -40,9 +37,12 @@ class ChatState(TypedDict):
 
 async def build_graph():
 
-    tools = await client.get_tools(client)
+    tools = await client.get_tools()
 
-    print(tools)
+    print("\nAvailable MCP Tools:")
+
+    for tool in tools:
+        print(tool.name)
 
     llm_with_tools = llm.bind_tools(tools)
 

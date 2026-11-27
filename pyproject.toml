@@ -1,23 +1,20 @@
+
 [project]
 name = "math-mcp-server"
 version = "0.1.0"
-description = "Add your description here"
+description = "Math MCP Server with LangGraph and Groq"
 readme = "README.md"
-authors = [
-    { name = "Delta Student", email = "krishnagupta2402@gmail.com" }
-]
 requires-python = ">=3.13"
+
 dependencies = [
-    "fastmcp>=4.2.6",
+    "fastmcp==3.4.11",
+    "mcp>=1.30.0,<2",
     "langchain>=1.5.2",
     "langchain-community>=0.4.2",
     "langchain-groq>=1.2.1",
-    "langchain-mcp-adapters>=0.3.1",
+    "langchain-mcp-adapters==0.3.2",
     "langgraph>=1.2.24",
 ]
-
-[project.scripts]
-math-mcp-server = "math_mcp_server:main"
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
