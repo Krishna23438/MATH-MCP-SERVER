@@ -19,12 +19,17 @@ llm = ChatGroq(
 
 client = MultiServerMCPClient(
     {
-        "arith":{
-            "transport":"stdio",
-            "command":"python3",
-            "args":["C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER/main.py"]
-        }
+    "math": {
+        "transport": "stdio",
+        "command": r"C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER\.venv\Scripts\python.exe",
+        "args": [
+            "-m",
+            "fastmcp",
+            "run",
+            r"C:\Users\Krishna gupta\OneDrive\Desktop\MATH-MCP-SERVER\main.py"
+        ]
     }
+}
 )
 
 
@@ -66,7 +71,7 @@ async def build_graph():
     return chatbot
 
 async def main():
-    chatbot = build_graph()
+    chatbot = await build_graph()
 
     # running the graph
     result = await chatbot.ainvoke({"messages":[HumanMessage(content="Find the modulus of 123456 and 23 and give answer like a cricketer commnetator.")]})
