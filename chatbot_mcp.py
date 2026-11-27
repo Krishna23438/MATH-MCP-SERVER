@@ -33,7 +33,13 @@ class ChatState(TypedDict):
     messages:Annotated[list[BaseMessage],add_messages]
 
 
-def build_graph():
+async def build_graph():
+
+    tools = await client.get_tools(client)
+
+    print(tools)
+
+    llm_with_tools = llm.bind_tools(tools)
 
     # nodes
     async def chat_node(state:ChatState):
